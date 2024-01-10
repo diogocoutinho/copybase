@@ -5,6 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { LocalStrategy } from './auth/passaport.strategy';
+import { SubscribersModule } from './subscribers/subscribers.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { LocalStrategy } from './auth/passaport.strategy';
       'mongodb://root:test@mongo:27017/copybase_teste?authSource=admin',
     ),
     UsersModule,
+    SubscribersModule,
     AuthModule,
   ],
   controllers: [AppController],

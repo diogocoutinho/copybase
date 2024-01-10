@@ -12,11 +12,6 @@ export class AuthService {
 
   async signIn(email: any, pass: any) {
     const user = await this.usersService.findOneByEmail(email);
-    console.log('signIn: ', user);
-    console.log(
-      'signIn: ',
-      !user || !(await bcrypt.compare(pass, user.password)),
-    );
     if (!user || !(await bcrypt.compare(pass, user.password))) {
       throw new UnauthorizedException();
     }
@@ -28,11 +23,22 @@ export class AuthService {
 
   async validateUser(username: string, pass: string): Promise<any> {
     const user = await this.usersService.findOneByEmail(username);
-    console.log('validateUser: ', user);
-    if (user && user.password === pass) {
+    console.log(
+      'Validator: ',
+      user && (await bcrypt.compare(pass, user.password)),
+    );
+    if (user && (await bcrypt.compare(pass, user.password))) {
       const { password, ...result } = user;
       return result;
     }
     return null;
+  }
+
+  async register(user: any) {
+    return this.usersService.create(user);
+  }
+
+  async logout() {
+    return { message: 'Logged out successfully' };
   }
 }

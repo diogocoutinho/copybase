@@ -1,7 +1,8 @@
-import {Controller, Get, Post, Request, UseGuards, Logger, Body} from '@nestjs/common';
+import { Controller, Get, Post, Logger, Body } from '@nestjs/common';
 import { AuthService } from './auth/auth.service';
 import { AppService } from './app.service';
-import { AuthGuard } from '@nestjs/passport';
+import { LoginUserDto } from './users/dto/login-user.dto';
+import { CreateUserDto } from './users/dto/create-user.dto';
 
 @Controller('auth')
 export class AppController {
@@ -11,12 +12,19 @@ export class AppController {
     private readonly appService: AppService,
   ) {}
 
-  // @UseGuards(AuthGuard('local'))
   @Post('login')
-  async login(@Body() req: any) {
-    console.log('Login: ', req.email);
-    this.logger.log(`AppController: ${req.email} ${req.password}`);
-    return this.authService.signIn(req.email, req.password);
+  async login(@Body() loginDto: LoginUserDto) {
+    return this.authService.signIn(loginDto.email, loginDto.password);
+  }
+
+  @Post('register')
+  async register(@Body() createUserDto: CreateUserDto) {
+    return this.authService.register(createUserDto);
+  }
+
+  @Post('logout')
+  async logout() {
+    return this.authService.logout();
   }
 
   @Get()

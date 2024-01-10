@@ -22,31 +22,16 @@ const router = createRouter({
       name: 'login',
       component: () => import('../views/LoginView.vue')
     },
-    // {
-    //   path: '/register',
-    //   name: 'register',
-    //   component: () => import('../views/RegisterView.vue')
-    // },
-    // {
-    //   path: '/profile',
-    //   name: 'profile',
-    //   component: () => import('../views/ProfileView.vue')
-    // },
-    // {
-    //   path: '/admin',
-    //   name: 'admin',
-    //   component: () => import('../views/BoardAdminView.vue')
-    // },
-    // {
-    //   path: '/mod',
-    //   name: 'moderator',
-    //   component: () => import('../views/BoardModeratorView.vue')
-    // },
-    // {
-    //   path: '/user',
-    //   name: 'user',
-    //   component: () => import('../views/BoardUserView.vue')
-    // }
+    {
+      path: '/register',
+      name: 'register',
+      component: () => import('../views/RegisterView.vue')
+    },
+    {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: () => import('../views/DashboardView.vue')
+    }
   ]
 })
 

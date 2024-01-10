@@ -12,49 +12,67 @@ import SupportIcon from './icons/IconSupport.vue'
     <template #icon>
       <DocumentationIcon />
     </template>
-    <template #heading>Documentation</template>
+    <template #heading>Decumentação</template>
 
-    Vue’s
-    <a href="https://vuejs.org/" target="_blank" rel="noopener">official documentation</a>
-    provides you with all information you need to get started.
+    Toda a documentação deste projeto está disponível em
+    <a href="https://github.com/diogocoutinho/copybase" target="_blank" rel="noopener">diogocoutinho/copybase</a>.
+      Se você está procurando
+    por um tutorial, você pode encontrar um no
+    <a href="https://github.com/diogocoutinho/copybase/blob/master/README.md" target="_blank" rel="noopener">README.md</a>.
   </WelcomeItem>
 
   <WelcomeItem>
     <template #icon>
       <ToolingIcon />
     </template>
-    <template #heading>Tooling</template>
+    <template #heading>Ferramentas</template>
 
-    This project is served and bundled with
-    <a href="https://vitejs.dev/guide/features.html" target="_blank" rel="noopener">Vite</a>. The
-    recommended IDE setup is
-    <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">VSCode</a> +
-    <a href="https://github.com/johnsoncodehk/volar" target="_blank" rel="noopener">Volar</a>. If
-    you need to test your components and web pages, check out
-    <a href="https://www.cypress.io/" target="_blank" rel="noopener">Cypress</a> and
+    Este projeto foi criado com
+    <a href="https://vitejs.dev/guide/features.html" target="_blank" rel="noopener">Vite</a> para o frontend,
+      e NestJS para o backend. O código fonte está disponível em
+    <a href="https://github.com/diogocoutinho/copybase/tree/master/backend" target="_blank" rel="noopener">diogocoutinho/copybase</a>.
+      A IDE
+      usado para desenvolver este projeto foi
+    <a href="https://www.jetbrains.com/phpstorm/" target="_blank" rel="noopener">PHPStorm</a>. Se
+    você está procurando uma ferramenta para testar o código, você pode usar
+    <a href="https://www.cypress.io/" target="_blank" rel="noopener">Cypress</a> e
     <a href="https://on.cypress.io/component" target="_blank" rel="noopener"
       >Cypress Component Testing</a
     >.
 
     <br />
 
-    More instructions are available in <code>README.md</code>.
+    Mais instruções em <code>README.md</code>.
   </WelcomeItem>
 
   <WelcomeItem>
     <template #icon>
       <EcosystemIcon />
     </template>
-    <template #heading>Ecosystem</template>
+    <template #heading>Ecosistema</template>
 
-    Get official tools and libraries for your project:
+    O ecossistema do Frontend é compostor por:
+  <p>FrontEnd</p>
     <a href="https://pinia.vuejs.org/" target="_blank" rel="noopener">Pinia</a>,
     <a href="https://router.vuejs.org/" target="_blank" rel="noopener">Vue Router</a>,
-    <a href="https://test-utils.vuejs.org/" target="_blank" rel="noopener">Vue Test Utils</a>, and
-    <a href="https://github.com/vuejs/devtools" target="_blank" rel="noopener">Vue Dev Tools</a>. If
-    you need more resources, we suggest paying
-    <a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">Awesome Vue</a>
-    a visit.
+    <a href="https://test-utils.vuejs.org/" target="_blank" rel="noopener">Vue Test Utils</a>, e
+    <a href="https://github.com/vuejs/devtools" target="_blank" rel="noopener">Vue Dev Tools</a>.
+  <p>BackEnd</p>
+    <a href="https://docs.nestjs.com/" target="_blank" rel="noopener">NestJS</a>,
+    <a href="https://docs.nestjs.com/techniques/database" target="_blank" rel="noopener">NestJS Database</a>,
+    <a href="https://docs.nestjs.com/techniques/mongodb" target="_blank" rel="noopener">NestJS MongoDB</a>,
+    <a href="https://www.npmjs.com/package/class-transformer" target="_blank" rel="noopener">Class Transformer</a>,
+    <a href="https://www.npmjs.com/package/class-validator" target="_blank" rel="noopener">Class Validator</a>
+    <a href="https://www.npmjs.com/package/@nestjs/swagger" target="_blank" rel="noopener">NestJS Swagger</a>,
+    <a href="https://www.npmjs.com/package/@nestjs/jwt" target="_blank" rel="noopener">NestJS JWT</a>,
+    <a href="https://www.npmjs.com/package/@nestjs/passport" target="_blank" rel="noopener">NestJS Passport</a>,
+  <p>Docker</p>
+    <a href="https://www.docker.com/" target="_blank" rel="noopener">Docker</a>,
+    <a href="https://hub.docker.com/_/mongo" target="_blank" rel="noopener">MongoDB</a>,
+    <a href="https://hub.docker.com/_/mongo-express" target="_blank" rel="noopener">Mongo Express</a>,
+    <a href="https://hub.docker.com/_/node" target="_blank" rel="noopener">Node</a>,
+
+
   </WelcomeItem>
 
   <WelcomeItem>

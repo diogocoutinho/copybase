@@ -1,44 +1,46 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import axios from '@/http-common'
-import router from "@/router";
-import { useAuthStore } from '@/stores/authStore';
+import axios from 'axios';
 
+const name = ref('');
 const email = ref('');
 const password = ref('');
-const authStore = useAuthStore();
 
-const handleSubmit = async () => {
+const handleSubmit = () => {
     console.log(`Username: ${email.value}, Password: ${password.value}`);
-    await axios.post('/auth/login', {
+    axios.post('/register', {
+        name: name.value,
         email: email.value,
         password: password.value
-    }).then(response => {
-        authStore.setToken(response.data.access_token);
-        router.push({ name: 'dashboard' });
-    }).catch(error => {
+    }).then((response: any) => {
+        console.log(response);
+    }).catch((error: any) => {
         console.log(error);
     });
 };
 </script>
 
 <template>
-    <div class="login-container">
-        <h2>Login</h2>
+    <div class="register-container">
+        <h2>Register</h2>
         <form @submit.prevent="handleSubmit">
             <div>
-                <label for="email">Username:</label>
+                <label for="name">Nome:</label>
+                <input id="name" type="text" v-model="name">
+            </div>
+            <div>
+                <label for="email">E-mail:</label>
                 <input id="email" type="text" v-model="email">
             </div>
             <div>
                 <label for="password">Password:</label>
                 <input id="password" type="password" v-model="password">
             </div>
-            <button type="submit">Login</button>
+            <button type="submit">Register</button>
         </form>
     </div>
 </template>
 
 <style scoped>
-/* Aqui você pode adicionar estilos para o seu formulário de login */
+
 </style>
