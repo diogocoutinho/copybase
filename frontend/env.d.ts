@@ -1,3 +1,5 @@
-interface ImportMetaEnv {
-  API_URL: "http://localhost:3000/";
+declare module '@vue/runtime-core' {
+  interface ImportMeta {
+    env: Record<string, unknown>;
+  }
 }

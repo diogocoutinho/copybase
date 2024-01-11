@@ -4,8 +4,7 @@ import axios from '@/http-common'
 import TheGrafics from "@/components/TheGrafics.vue";
 
 const file = ref(null);
-const subscribers = ref([]);
-const mmr = ref(0);
+const mrrByMonth = ref({});
 
 const onFileChange = (e) => {
     file.value = e.target.files[0];
@@ -23,8 +22,7 @@ const onSubmit = () => {
 const getSubscribers = () => {
     axios.get('/subscribers').then((response) => {
         console.log(response.data);
-        subscribers.value = response.data.subscribers;
-        mmr.value = response.data.mmr;
+        mrrByMonth.value = response.data.metricsByMonth;
     });
 };
 
@@ -35,14 +33,14 @@ onMounted(() => {
 
 <template>
     <div>
-        <h1>Logged</h1>
+        <h1>Gráficos</h1>
 
-        <form v-if="subscribers.length === 0" @submit.prevent="onSubmit">
+        <form v-if="!mrrByMonth" @submit.prevent="onSubmit">
             <input type="file" @change="onFileChange" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
             <button type="submit">Upload</button>
         </form>
         <div v-else>
-            <TheGrafics :subscribers="subscribers" />
+            <TheGrafics :metricsByMonth="mrrByMonth" />
         </div>
     </div>
 </template>

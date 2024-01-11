@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import axios from 'axios';
+import axios from '@/http-common';
 
 const name = ref('');
 const email = ref('');
 const password = ref('');
 
 const handleSubmit = () => {
-    console.log(`Username: ${email.value}, Password: ${password.value}`);
-    axios.post('/register', {
+        axios.post('/auth/register', {
         name: name.value,
         email: email.value,
         password: password.value

@@ -95,30 +95,40 @@ export class SubscribersService {
       return groups;
     }, {});
 
-    const mrrByMonth = {};
-    const churnRateByMonth = {};
+    const metricsByMonth = {};
     for (const month in subscribersByMonth) {
       const subscribers = subscribersByMonth[month];
 
       const mrr = subscribers
-        .filter(
-          (subscriber: { status: string }) => subscriber.status === 'Ativa',
-        )
-        .reduce(
-          (total: any, subscriber: { value: any }) => total + subscriber.value,
-          0,
-        );
+        .filter((subscriber: { status: string; frequency: string; }) => subscriber.status === 'Ativa' && subscriber.frequency === 'Mensal')
+        .reduce((total: number, subscriber: { value: any; }) => total + Number(subscriber.value), 0);
 
-      const churnRate =
-        subscribers.filter(
-          (subscriber: { status: string }) => subscriber.status === 'Cancelada',
-        ).length / subscribers.length;
+      const previousMonth = moment(month, 'MM-YYYY').subtract(1, 'months').format('MM-YYYY');
+      const previousMrr = metricsByMonth[previousMonth]?.mrr || 0;
+      const revenueGrowth = mrr - previousMrr;
 
-      mrrByMonth[month] = mrr;
-      churnRateByMonth[month] = churnRate;
+      const retainedSubscribers = subscribers.filter((subscriber: { status: string; }) => subscriber.status === 'Ativa').length;
+      const totalSubscribers = subscribers.length;
+      const retentionRate = totalSubscribers > 0 ? retainedSubscribers / totalSubscribers : 0;
+
+      const newSubscribers = subscribers.filter((subscriber: { start_date: moment.MomentInput; }) => moment(subscriber.start_date).format('MM-YYYY') === month).length;
+      const attractionRate = totalSubscribers > 0 ? newSubscribers / totalSubscribers : 0;
+
+      const cancelledSubscribers = subscribers.filter(
+        (subscriber: { status: string; }) => subscriber.status === 'Cancelada'
+      );
+      const churnRate = cancelledSubscribers.length / subscribers.length;
+
+      const monthlySubscribers = subscribers.filter((subscriber: { frequency: string; }) => subscriber.frequency === 'Mensal');
+      const annualSubscribers = subscribers.filter((subscriber: { frequency: string; }) => subscriber.frequency === 'Anual');
+
+      const monthlyRevenueForecast = monthlySubscribers.reduce((total: number, subscriber: { value: any; }) => total + Number(subscriber.value), 0);
+      const annualRevenueForecast = annualSubscribers.reduce((total: number, subscriber: { value: any; }) => total + Number(subscriber.value), 0);
+
+      metricsByMonth[month] = { mrr, revenueGrowth, retentionRate, attractionRate, churnRate, monthlyRevenueForecast, annualRevenueForecast };
     }
 
-    return { mrrByMonth, churnRateByMonth, subscribers };
+    return { metricsByMonth, subscribers };
   }
 
   serialDateToJSDate(serialDate: number) {

@@ -17,8 +17,12 @@ services:
     command: sh -c 'npm install && npm run start:dev'
 
   frontend:
+    ipc: host
     restart: always
     image: node:18.4.0-alpine3.14
+    build:
+      context: ./
+      dockerfile: Dockerfile.42-node
     volumes:
       - ./frontend/:/app
     depends_on:
@@ -27,11 +31,12 @@ services:
       - '8080:8080'
       - '5173:5173'
       - '80:80'
+      - '4173:4173'
     extra_hosts:
       - 'host.docker.internal:host-gateway'
     networks:
       - mynet
-    command: sh -c 'npm install && npm run dev'
+    command: sh -c 'npm i -g cypress && npm install && npm run dev'
 
   mongo:
     image: mongo

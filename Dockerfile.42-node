@@ -3,6 +3,12 @@ LABEL maintainer="Julio <juligonz@student.42.fr>"
 
 RUN apk add --no-cache curl zsh git emacs vim;
 
+RUN echo "Installing Xvfb..." && \
+    apk add --no-cache xvfb && \
+    echo "Xvfb installed."
+
+RUN npm install -g cypress
+
 # https://github.com/nodejs/docker-node/blob/main/docs/BestPractices.md#global-npm-dependencies
 ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
 ENV PATH=$PATH:/home/node/.npm-global/bin

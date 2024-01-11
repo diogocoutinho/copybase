@@ -1,51 +1,68 @@
-# Boilerplate: Single repo NestJS + VueJS
+<p align="center">
+  <img src="frontend/src/assets/copybase_logo.png" alt="Logo do CopyBase">
+</p>
 
-## Getting started
+# CopyBase - Projeto para teste técnico
 
-###### Build the base image
-```bash
-docker-compose build
-```
-###### Create backend Nestjs app :
-```bash
-docker-compose run --rm backend zsh
-```
-```bash
-nest new . --skip-git
-```
-```bash
-exit
-```
-###### Create frontend vuejs app:
+Este projeto foi desenvolvido para o teste técnico da CopyBase. O projeto consiste em um sistema de cadastro de usuários e de cadastro de produtos. O sistema foi desenvolvido com o framework Nest.js no backend e Vue.js no frontend.
 
-```bash
-docker-compose run --rm frontend zsh
+## Começando
+
+Essas instruções fornecerão uma cópia do projeto em execução na sua máquina local para fins de desenvolvimento e teste.
+
+### Pré-requisitos
+
+Para executar o projeto, é recomendado o uso de docker e docker-compose. Caso não tenha, é necessário instalar o Node.js e o NPM.
+Porém, para a execução do teste com cypress, é necessário ter Node.js e NPM instalados.
+
+### Instalação
+
+Para instalar o projeto, é necessário clonar o repositório e instalar as dependências.
+
 ```
-```bash
-vue create . --no-git # Answer yes to "generate project in current directory" + better choose NPM as package manager 
+git clone https://github.com/diogocoutinho/copybase.git
+cd copybase
+cd backend
+cp .env.example .env
+docker-compose up -d
 ```
-```bash
-exit
+
+## Executando os testes
+
+No backend, os testes podem ser executados com o comando:
+
 ```
-###### Then youre good to go :
-```bash
-docker-compose up
+cd backend
+docker-compose exec backend npm run test
 ```
-###### Any npm packages can be installed by going in the appropriate container :
-Install npm modules in backend (the service must be running -> `docker-compose up`):
-```bash
-docker-compose exec backend zsh
+
+No frontend, os testes podem ser executados com o comando:
+
 ```
-```bash
-npm install something
+cd frontend
+npm run cypress:open
 ```
-Install npm modules in frontend (the service must be running -> `docker-compose up`):
-```bash
-docker-compose exec frontend zsh
-```
-```bash
-npm install something
-```
-### RTFM !
-- https://docs.nestjs.com/
-- https://vuejs.org/v2/guide/
+
+## Desdobramento, desenvolvimento
+
+Apesar de não ter experiencia com Nest.js, consegui desenvolver o backend com sucesso. O frontend foi desenvolvido com Vue.js, que é o framework que tenho mais experiencia. O frontend foi desenvolvido com o objetivo de ser responsivo, mas não foi testado em dispositivos móveis.
+
+## Construído com
+
+* [Nest.js](https://nestjs.com/) - O framework web usado no backend
+* [Vue.js](https://vuejs.org/) - O framework web usado no frontend
+* [NPM](https://www.npmjs.com/) - Gerenciamento de dependência
+* [Cypress](https://www.cypress.io/) - Usado para testes de ponta a ponta para o frontend
+* [Jest](https://jestjs.io/) - Usado para testes unitários para o backend
+
+## Autores
+
+* **Diogo C. Coutinho** - *GitHub* - [diogocoutinho](https://github.com/diogocoutinho) - *LinkedIn* - [diogocoutinho](https://www.linkedin.com/in/diogocoutinho/)
+
+## Licença
+
+Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE.md](LICENSE.md) para detalhes
+
+## Agradecimentos
+
+* Agradeço a oportunidade de participar do processo seletivo.

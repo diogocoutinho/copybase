@@ -9,7 +9,6 @@ const password = ref('');
 const authStore = useAuthStore();
 
 const handleSubmit = async () => {
-    console.log(`Username: ${email.value}, Password: ${password.value}`);
     await axios.post('/auth/login', {
         email: email.value,
         password: password.value

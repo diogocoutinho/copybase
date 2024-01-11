@@ -5,7 +5,7 @@ export class CreateSubscriberDto {
   start_date: Date;
   status: string;
   status_date: Date;
-  cancellation_date: Date;
+  cancellation_date: Date | string;
   value: string;
   next_cycle_date: Date;
   subscriber_id: string;
