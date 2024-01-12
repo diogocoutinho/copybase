@@ -14,14 +14,12 @@ const onSubmit = () => {
     const formData = new FormData();
     formData.append('file', file.value);
     axios.post('/subscribers/upload', formData).then((response) => {
-        console.log(response.data);
         getSubscribers();
     });
 };
 
 const getSubscribers = () => {
     axios.get('/subscribers').then((response) => {
-        console.log(response.data);
         mrrByMonth.value = response.data.metricsByMonth;
     });
 };
