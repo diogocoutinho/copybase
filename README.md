@@ -4,7 +4,7 @@
 
 # CopyBase - Projeto para teste técnico
 
-Este projeto foi desenvolvido para o teste técnico da CopyBase. O projeto consiste em um sistema de cadastro de usuários e de cadastro de produtos. O sistema foi desenvolvido com o framework Nest.js no backend e Vue.js no frontend.
+Este projeto foi desenvolvido para o teste técnico da CopyBase. O projeto consiste num sistema de cálculo de métricas a partir do ‘upload’ de uma planilha com modelo específico. O sistema foi desenvolvido com o ‘framework’ Nest.js no backend e Vue.js no frontend.
 
 ## Começando
 
@@ -12,7 +12,7 @@ Essas instruções fornecerão uma cópia do projeto em execução na sua máqui
 
 ### Pré-requisitos
 
-Para executar o projeto, é recomendado o uso de docker e docker-compose. Caso não tenha, é necessário instalar o Node.js e o NPM.
+Para executar o projeto, é recomendado o uso de docker e docker-compose. Caso não tenha, é necessário instalar o Node.js e o NPM para a execução deste sem docker.
 Porém, para a execução do teste com cypress, é necessário ter Node.js e NPM instalados.
 
 ### Instalação
@@ -50,13 +50,13 @@ npm run cypress:open
 
 ## Desdobramento, desenvolvimento
 
-Apesar de não ter experiencia com Nest.js, consegui desenvolver o backend com sucesso. O frontend foi desenvolvido com Vue.js, que é o framework que tenho mais experiencia. O frontend foi desenvolvido com o objetivo de ser responsivo, mas não foi testado em dispositivos móveis.
+Apesar de não ter experiencia com Nest.js, consegui desenvolver o backend com sucesso. O frontend foi desenvolvido com Vue.js, que é o ‘framework’ que tenho mais experiencia. O frontend foi desenvolvido para ser responsivo, mas não foi testado em dispositivos móveis.
 
 ## Construído com
 
 * [Nest.js](https://nestjs.com/) - O framework web usado no backend
 * [Vue.js](https://vuejs.org/) - O framework web usado no frontend
-* [NPM](https://www.npmjs.com/) - Gerenciamento de dependência
+* [NPM](https://www.npmjs.com/) - Gestão de dependência
 * [Cypress](https://www.cypress.io/) - Usado para testes de ponta a ponta para o frontend
 * [Jest](https://jestjs.io/) - Usado para testes unitários para o backend
 
