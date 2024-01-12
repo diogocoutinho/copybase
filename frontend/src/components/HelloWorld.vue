@@ -52,6 +52,7 @@ onUpdated(() => {
           <RouterLink to="/about">About</RouterLink>
           <RouterLink v-if="!token" to="/login">Login</RouterLink>
           <RouterLink v-if="!token" to="/register">Register</RouterLink>
+          <RouterLink v-if="token" to="/dashboard">Dashboard</RouterLink>
           <RouterLink v-if="token" to="/dashboard" @click="handleLogout">Logout</RouterLink>
       </nav>
   </div>

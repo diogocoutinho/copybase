@@ -24,8 +24,13 @@ git clone https://github.com/diogocoutinho/copybase.git
 cd copybase
 cd backend
 cp .env.example .env
+cd ~
 docker-compose up -d
 ```
+
+## Documentação da API
+
+A documentação da API pode ser acessada em http://localhost:3000/api que foi gerada com o Swagger.
 
 ## Executando os testes
 
