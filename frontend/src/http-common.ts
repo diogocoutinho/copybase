@@ -13,7 +13,7 @@ apiClient.interceptors.request.use(config => {
   const token = useAuthStore().token
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
-  } else {
+  } else if (router.currentRoute.value.name !== 'login' && router.currentRoute.value.name !== 'register') {
     router.push({name: 'login'}).then(r => r)
   }
   return config;

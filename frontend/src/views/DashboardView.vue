@@ -4,14 +4,17 @@ import axios from '@/http-common'
 import TheGrafics from "@/components/TheGrafics.vue";
 
 const file = ref(null);
+const fileName = ref('');
 const mrrByMonth = ref({});
 
 const onFileChange = (e) => {
     file.value = e.target.files[0];
+    fileName.value = e.target.files[0].name;
 };
 
 const onFileDrop = (e) => {
     file.value = e.dataTransfer.files[0];
+    fileName.value = e.dataTransfer.files[0].name;
 };
 
 const onSubmit = () => {
@@ -55,7 +58,8 @@ onMounted(() => {
                        @change="onFileChange"
                        accept=".csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel"
                        id="fileInput">
-                <span>Arraste e solte um arquivo aqui ou clique para selecionar</span>
+                <span v-if="fileName">Arquivo selecionado: {{ fileName }}</span>
+                <span v-else>Arraste e solte um arquivo aqui ou clique para selecionar</span>
             </label>
         </form>
         <button

@@ -81,3 +81,7 @@ a,
   background-color: #41167f;
   color: white;
 }
+
+.error {
+    color: red;
+}

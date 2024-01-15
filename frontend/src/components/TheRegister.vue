@@ -1,20 +1,31 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import axios from '@/http-common';
+import { useI18n } from 'vue-i18n'
+import router from "@/router";
 
 const name = ref('');
 const email = ref('');
 const password = ref('');
+const error = ref([]);
 
-const handleSubmit = () => {
-        axios.post('/auth/register', {
+const { t } = useI18n()
+
+const handleSubmit = async () => {
+    error.value = [];
+    await axios.post('/auth/register', {
         name: name.value,
         email: email.value,
         password: password.value
-    }).then((response: any) => {
-        console.log(response);
-    }).catch((error: any) => {
-        console.log(error);
+    }).then(() => {
+        router.push({ name: 'login' });
+    }).catch(httpError => {
+        console.log(httpError.response.status)
+        if (httpError.response.status === 400) {
+            error.value = httpError.response.data.message.map(err => t(`errors.${err}`));
+            return;
+        }
+        error.value.push(t(`errors.${httpError.response.data.message}`));
     });
 };
 </script>
@@ -34,6 +45,11 @@ const handleSubmit = () => {
             <div>
                 <label for="password">Password:</label>
                 <input id="password" type="password" v-model="password">
+            </div>
+            <div v-if="error.length" class="error">
+                <div v-for="(err, index) in error" :key="index">
+                    {{ err.toUpperCase() }}
+                </div>
             </div>
             <button type="submit">Register</button>
         </form>
